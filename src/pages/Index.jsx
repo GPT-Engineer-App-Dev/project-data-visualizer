@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, FormControl, FormLabel, Input, VStack, HStack, Text, Code, Divider } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, VStack, HStack, Text, Code, Divider, Select } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
 const Index = () => {
@@ -32,13 +32,13 @@ const Index = () => {
         {csvData.length > 0 && (
           <>
             <Text fontWeight="bold">Projects:</Text>
-            <HStack spacing={4}>
+            <Select placeholder="Select a project..." value={selectedProject} onChange={(e) => setSelectedProject(e.target.value)}>
               {uniqueProjects.map((projectId) => (
-                <Button key={projectId} onClick={() => setSelectedProject(projectId)}>
+                <option key={projectId} value={projectId}>
                   {projectId}
-                </Button>
+                </option>
               ))}
-            </HStack>
+            </Select>
 
             {selectedProject && (
               <>
